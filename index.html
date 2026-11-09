@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lux Web Ventures</title>
+<meta name="description" content="Lux Web Ventures Ltd makes games for iPhone and iPad.">
+<style>
+  :root { color-scheme: light dark; --bg: #fbfaff; --fg: #1b1830; --muted: #625e78; --card: #ffffff; --line: #e6e3f2; --a1: #ff6a88; --a2: #7b5cff; --a3: #26c6da; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #13121c; --fg: #f1effa; --muted: #a8a4bf; --card: #1c1a29; --line: #2c2940; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 16px 72px; }
+  .mark { width: 64px; height: 64px; border-radius: 18px; background: linear-gradient(135deg, var(--a1), var(--a2) 55%, var(--a3)); display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 28px; letter-spacing: -1px; }
+  h1 { font-size: 36px; line-height: 1.15; margin: 20px 0 8px; letter-spacing: -0.5px; }
+  .lead { color: var(--muted); font-size: 19px; margin: 0 0 40px; }
+  h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin: 0 0 12px; }
+  .game + .game { margin-top: 14px; }
+  .game { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+  .game h3 { margin: 0 0 4px; font-size: 22px; }
+  .game p { margin: 0 0 14px; color: var(--muted); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .links a { text-decoration: none; color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 15px; }
+  .links a.primary { background: linear-gradient(135deg, var(--a1), var(--a2)); color: #fff; border-color: transparent; }
+  footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <div class="mark" aria-hidden="true">lw</div>
+  <h1>Lux Web Ventures</h1>
+  <p class="lead">We make small, playful games for iPhone and iPad.</p>
+
+  <h2>Games</h2>
+  <div class="game">
+    <h3>Creaking Hinge</h3>
+    <p>Open the door slowly. Something is listening. A horror game built for folding iPhones, with an on-screen slider on every other iPhone and iPad.</p>
+    <div class="links">
+      <a class="primary" href="https://apps.apple.com/app/id6828595790">App Store</a>
+      <a href="support.html#creaking-hinge">Support</a>
+    </div>
+  </div>
+
+  <div class="game">
+    <h3>Glide</h3>
+    <p>Flick, glide and ride the air under the clouds. Steer with the hinge on iPhone Duo, with tilt, or by touch on any iPhone.</p>
+    <div class="links">
+      <a href="support.html#glide">Support</a>
+    </div>
+  </div>
+
+  <footer><a href="support.html">Support</a> · <a href="privacy.html">Privacy policy</a><br>Lux Web Ventures Ltd · <a href="mailto:admin@silkandpaw.com">admin@silkandpaw.com</a></footer>
+</main>
+</body>
+</html>
