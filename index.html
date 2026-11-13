@@ -1,56 +1,416 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lux Web Ventures</title>
-<meta name="description" content="Lux Web Ventures Ltd makes games for iPhone and iPad.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Lux Web Ventures Ltd is an independent studio making games for iPhone and iPad, including Creaking Hinge.">
+<link rel="canonical" href="https://luxwebventures.com/">
+<link rel="icon" href="assets/lw-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#fbf8ff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lux Web Ventures">
+<meta property="og:title" content="Lux Web Ventures">
+<meta property="og:description" content="Independent games for iPhone and iPad. Play Creaking Hinge, out now on the App Store.">
+<meta property="og:url" content="https://luxwebventures.com/">
+<meta property="og:image" content="https://luxwebventures.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lux Web Ventures Ltd",
+  "url": "https://luxwebventures.com/",
+  "logo": "https://luxwebventures.com/assets/apple-touch-icon.png",
+  "email": "admin@luxwebventures.com",
+  "identifier": { "@type": "PropertyValue", "propertyID": "Companies House number", "value": "17425521" },
+  "address": { "@type": "PostalAddress", "streetAddress": "71-75 Shelton Street, Covent Garden", "addressLocality": "London", "postalCode": "WC2H 9JQ", "addressCountry": "GB" },
+  "sameAs": ["https://x.com/luxwebventures", "https://www.youtube.com/@luxwebventures"]
+}
+</script>
 <style>
-  :root { color-scheme: light dark; --bg: #fbfaff; --fg: #1b1830; --muted: #625e78; --card: #ffffff; --line: #e6e3f2; --a1: #ff6a88; --a2: #7b5cff; --a3: #26c6da; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #13121c; --fg: #f1effa; --muted: #a8a4bf; --card: #1c1a29; --line: #2c2940; } }
+  /* Layout: bright studio shell (logo bar, hero with icon stack), one dark "game world" feature card, then upcoming games, studio facts, legal footer. */
+  :root {
+    --paper: #fbf8ff;
+    --surface: #ffffff;
+    --ink: #1d1631;
+    --muted: #645d7c;
+    --line: #e9e3f5;
+    --peach: #ff8a3d;
+    --pink: #ff4f8b;
+    --violet: #7c5cff;
+    --sky: #3fc5e8;
+    --brand: linear-gradient(135deg, var(--peach), var(--pink) 45%, var(--violet));
+    --glow-a: rgba(255, 138, 61, .22);
+    --glow-b: rgba(124, 92, 255, .20);
+    --chip: #f3eefc;
+    --todo-bg: #fff1a8;
+    --todo-fg: #5c4a00;
+    --night: #120f0c;
+    --night-fg: #efe7da;
+    --night-muted: #b9ab95;
+    --night-line: rgba(239, 231, 218, .16);
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #15111f; --surface: #1d1830; --ink: #f4f0ff; --muted: #aaa2c4; --line: #2e2747;
+      --glow-a: rgba(255, 138, 61, .16); --glow-b: rgba(124, 92, 255, .22); --chip: #262040;
+      --todo-bg: #5c4a00; --todo-fg: #fff1a8; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #15111f; --surface: #1d1830; --ink: #f4f0ff; --muted: #aaa2c4; --line: #2e2747;
+    --glow-a: rgba(255, 138, 61, .16); --glow-b: rgba(124, 92, 255, .22); --chip: #262040;
+    --todo-bg: #5c4a00; --todo-fg: #fff1a8; color-scheme: dark;
+  }
+
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-  main { max-width: 760px; margin: 0 auto; padding: 56px 16px 72px; }
-  .mark { width: 64px; height: 64px; border-radius: 18px; background: linear-gradient(135deg, var(--a1), var(--a2) 55%, var(--a3)); display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 28px; letter-spacing: -1px; }
-  h1 { font-size: 36px; line-height: 1.15; margin: 20px 0 8px; letter-spacing: -0.5px; }
-  .lead { color: var(--muted); font-size: 19px; margin: 0 0 40px; }
-  h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin: 0 0 12px; }
-  .game + .game { margin-top: 14px; }
-  .game { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
-  .game h3 { margin: 0 0 4px; font-size: 22px; }
-  .game p { margin: 0 0 14px; color: var(--muted); }
-  .links { display: flex; flex-wrap: wrap; gap: 10px; }
-  .links a { text-decoration: none; color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 15px; }
-  .links a.primary { background: linear-gradient(135deg, var(--a1), var(--a2)); color: #fff; border-color: transparent; }
-  footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
-  footer a { color: inherit; }
+  html { -webkit-text-size-adjust: 100%; }
+  html, body { overflow-x: clip; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--font); }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+  a:focus-visible, .btn:focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; border-radius: 8px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .todo { background: var(--todo-bg); color: var(--todo-fg); padding: 0 6px; border-radius: 4px; font-weight: 600; }
+
+  /* Top bar */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand img { width: 40px; height: 40px; }
+  .brand span { font-family: var(--display); font-weight: 750; font-size: 19px; letter-spacing: -.01em; }
+  .top nav { display: flex; gap: 22px; font-size: 15px; }
+  .top nav a { text-decoration: none; color: var(--muted); }
+  .top nav a:hover { color: var(--ink); }
+
+  /* Hero */
+  .hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-block: 48px 72px; }
+  .hero::before { content: ""; position: absolute; inset: -40px 0 0 30%; background: radial-gradient(closest-side at 70% 45%, var(--glow-b), transparent), radial-gradient(closest-side at 40% 70%, var(--glow-a), transparent); z-index: -1; pointer-events: none; }
+  .hero h1 { font-size: clamp(40px, 6.2vw, 68px); line-height: 1.02; letter-spacing: -.035em; font-weight: 800; margin-top: 14px; }
+  .hero h1 em { font-style: normal; background: var(--brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { font-size: 19px; color: var(--muted); max-width: 34em; margin: 20px 0 0; }
+  .icons { position: relative; height: 300px; }
+  .tile { position: absolute; width: 168px; height: 168px; border-radius: 38px; box-shadow: 0 24px 50px -18px rgba(40, 20, 80, .45); overflow: hidden; display: grid; place-items: end start; padding: 16px; color: #fff; font-weight: 700; font-size: 14px; }
+  .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .tile.ch { left: 50%; top: 10px; transform: translateX(-50%) rotate(-4deg); z-index: 3; }
+  .tile.glide { left: 4%; top: 96px; transform: rotate(-12deg); background: linear-gradient(160deg, #8fe3ff, var(--sky) 55%, #5b7dff); z-index: 2; }
+  .tile.farm { right: 4%; top: 104px; transform: rotate(10deg); background: linear-gradient(160deg, #ffe08a, #ffb35c 55%, var(--pink)); z-index: 1; }
+  .tile small { position: relative; background: rgba(255,255,255,.25); padding: 2px 10px; border-radius: 999px; font-size: 12px; letter-spacing: .04em; }
+  .tile svg { position: absolute; top: 34px; left: 50%; transform: translateX(-50%); width: 76px; height: 76px; opacity: .95; }
+
+  /* Feature: Creaking Hinge in its own dark world */
+  .section { padding-block: 24px 64px; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+  .section-head h2 { font-size: 28px; letter-spacing: -.02em; }
+  .feature { background: var(--night); color: var(--night-fg); border-radius: 28px; overflow: hidden; box-shadow: 0 30px 70px -40px rgba(20, 10, 0, .8); }
+  .feature .banner { aspect-ratio: 1600 / 686; width: 100%; object-fit: cover; }
+  .feature-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 8px 40px 40px; }
+  .feature .app { display: flex; gap: 16px; align-items: center; }
+  .feature .app img { width: 72px; height: 72px; border-radius: 17px; border: 1px solid var(--night-line); }
+  .feature h3 { font-family: var(--serif); font-weight: 400; font-size: 34px; letter-spacing: .06em; text-transform: uppercase; line-height: 1.1; }
+  .feature .tag { font-family: var(--serif); font-style: italic; color: var(--night-muted); font-size: 18px; margin: 2px 0 0; }
+  .feature .copy p { color: var(--night-fg); opacity: .88; margin: 20px 0 0; max-width: 40em; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
+  .facts li { border: 1px solid var(--night-line); border-radius: 999px; padding: 4px 12px; font-size: 14px; color: var(--night-muted); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; border-radius: 14px; padding: 11px 18px; font-weight: 600; font-size: 16px; }
+  .btn.store { background: var(--night-fg); color: var(--night); }
+  .btn.store svg { width: 20px; height: 20px; }
+  .btn.ghost { border: 1px solid var(--night-line); color: var(--night-fg); }
+  .btn.ghost:hover { background: rgba(255,255,255,.06); }
+
+  .block { display: grid; align-content: start; gap: 14px; border-top: 1px solid var(--night-line); padding-top: 28px; }
+  .kicker { margin: 0; font-family: var(--font); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--night-muted); }
+  .videos { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); gap: 16px; align-items: start; }
+  .videos figure { margin: 0; }
+  .videos video { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--night-line); background: #000; }
+  .videos figcaption, .note { font-size: 14px; color: var(--night-muted); margin: 6px 0 0; }
+  .steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .steps li { counter-increment: s; border: 1px solid var(--night-line); border-radius: 16px; padding: 16px; font-size: 15px; color: var(--night-muted); line-height: 1.5; }
+  .steps li::before { content: counter(s); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 700; font-size: 14px; margin-bottom: 10px; }
+  .steps strong { display: block; color: var(--night-fg); font-size: 16px; margin-bottom: 4px; }
+  .strip { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-color: var(--night-line) transparent; }
+  .strip img { flex: 0 0 auto; width: min(560px, 82%); border-radius: 12px; border: 1px solid var(--night-line); scroll-snap-align: start; }
+  .pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+  .pair .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pair .videos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .socials { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .btn span { font-weight: 400; opacity: .7; }
+  .studio-socials { display: flex; flex-wrap: wrap; gap: 8px; }
+  .studio-socials a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 15px; font-weight: 600; }
+  .studio-socials a:hover { border-color: var(--pink); }
+  .studio-socials svg { width: 16px; height: 16px; }
+
+  /* Upcoming games */
+  .next { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 26px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 18px; align-items: start; }
+  .card .mini { width: 64px; height: 64px; border-radius: 15px; display: grid; place-items: center; }
+  .card .mini svg { width: 36px; height: 36px; }
+  .card h3 { font-size: 22px; letter-spacing: -.01em; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .badge { font-family: var(--font); font-size: 12px; font-weight: 600; letter-spacing: .04em; background: var(--chip); color: var(--muted); padding: 3px 10px; border-radius: 999px; }
+  .card p { color: var(--muted); margin: 8px 0 0; }
+
+  /* Studio */
+  .studio { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; border-top: 1px solid var(--line); padding-block: 56px 64px; }
+  .studio h2 { font-size: 28px; letter-spacing: -.02em; }
+  .studio p { color: var(--muted); margin: 14px 0 0; max-width: 36em; }
+  .promises { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 10px; }
+  .promises li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }
+  .promises li::before { content: ""; width: 10px; height: 10px; margin-top: 9px; border-radius: 3px; background: var(--brand); }
+  .contact { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 26px; display: grid; gap: 18px; align-self: start; }
+  .contact div { display: grid; gap: 2px; }
+  .contact .label { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .contact a { font-weight: 600; text-decoration-color: var(--pink); text-underline-offset: 3px; word-break: break-word; }
+
+  footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 14px; }
+  footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
+  footer nav { display: flex; gap: 18px; }
+  footer p { margin: 10px 0 0; max-width: 60em; }
+
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: minmax(0, 1fr); padding-block: 24px 48px; gap: 8px; }
+    .icons { height: 250px; max-width: 420px; width: 100%; margin: 0 auto; }
+    .tile { width: 132px; height: 132px; border-radius: 30px; }
+    .tile svg { width: 60px; height: 60px; top: 24px; }
+    .feature-body, .studio { grid-template-columns: minmax(0, 1fr); }
+    .feature-body { padding: 4px 22px 26px; gap: 26px; }
+    .next { grid-template-columns: minmax(0, 1fr); }
+    .pair { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .videos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  }
+  @media (max-width: 520px) {
+    .top nav { display: none; }
+    .feature h3 { font-size: 26px; }
+    .feature .app img { width: 60px; height: 60px; }
+    .card { grid-template-columns: minmax(0, 1fr); }
+    .pair .steps { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .tile { transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+    .icons:hover .tile.ch { transform: translateX(-50%) rotate(0deg) translateY(-6px); }
+    .icons:hover .tile.glide { transform: rotate(-16deg) translateX(-8px); }
+    .icons:hover .tile.farm { transform: rotate(14deg) translateX(8px); }
+  }
 </style>
 </head>
 <body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./" aria-label="Lux Web Ventures home">
+      <img src="assets/lw-mark.svg" alt="" width="40" height="40">
+      <span>Lux Web Ventures</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="#games">Games</a>
+      <a href="#studio">Studio</a>
+      <a href="support.html">Support</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Independent games studio</div>
+      <h1>Games you play with the <em>whole phone.</em></h1>
+      <p>We make small, inventive games for iPhone and iPad. Fold it, tilt it or just tap: every game plays on any iPhone, and goes further on a foldable.</p>
+    </div>
+    <div class="icons" aria-hidden="true">
+      <div class="tile glide">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M6 24 42 10 30 40l-6-12z" fill="#fff"/><path d="M24 28 42 10" stroke="#3fc5e8" stroke-width="2"/></svg>
+        <small>Soon</small>
+      </div>
+      <div class="tile farm">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M18 6h12v6l4 6v22a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V18l4-6z" fill="#fff"/><path d="M14 24h20" stroke="#ffb35c" stroke-width="3"/></svg>
+        <small>Soon</small>
+      </div>
+      <div class="tile ch"><img src="assets/creaking-hinge-icon.png" alt="" width="168" height="168"></div>
+    </div>
+  </section>
+</div>
+
 <main>
-  <div class="mark" aria-hidden="true">lw</div>
-  <h1>Lux Web Ventures</h1>
-  <p class="lead">We make small, playful games for iPhone and iPad.</p>
+  <section class="section" id="games">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Out now</h2>
+      </div>
 
-  <h2>Games</h2>
-  <div class="game">
-    <h3>Creaking Hinge</h3>
-    <p>Open the door slowly. Something is listening. A horror game built for folding iPhones, with an on-screen slider on every other iPhone and iPad.</p>
-    <div class="links">
-      <a class="primary" href="https://apps.apple.com/app/id6828595790">App Store</a>
-      <a href="support.html#creaking-hinge">Support</a>
+      <article class="feature" aria-labelledby="ch-title">
+        <img class="banner" src="assets/creaking-hinge-banner.jpg" alt="A dark door, slightly open, with a pale figure waiting in the gap of light." width="1600" height="686">
+        <div class="feature-body">
+          <div class="copy">
+            <div class="app">
+              <img src="assets/creaking-hinge-icon.png" alt="Creaking Hinge app icon" width="72" height="72">
+              <div>
+                <h3 id="ch-title">Creaking Hinge</h3>
+                <p class="tag">Horror for iPhone and iPad</p>
+              </div>
+            </div>
+            <p>A horror game about opening a door very, very slowly. On iPhone Duo, the real hinge opens the door. On every other iPhone and iPad, an on-screen slider does. Ease it open, take the relic, and close it again without a sound. Too fast, and the hinge creaks. Too many creaks, and it hears you.</p>
+            <ul class="facts">
+              <li>100 doors</li>
+              <li>Christmas mode</li>
+              <li>iPhone and iPad</li>
+              <li>Real hinge on iPhone Duo</li>
+            </ul>
+            <div class="actions">
+              <a class="btn store" href="https://apps.apple.com/app/id6828595790">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-.9-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>
+                Download on the App Store
+              </a>
+              <a class="btn ghost" href="support.html#creaking-hinge">Help</a>
+              <a class="btn ghost" href="privacy.html">Privacy</a>
+            </div>
+          </div>
+          <div class="pair">
+          <div class="block">
+            <h4 class="kicker">See it played</h4>
+            <div class="videos">
+              <figure class="tall">
+                <video controls playsinline preload="none" poster="assets/creaking-hinge-gameplay-poster.jpg" width="720" height="1280">
+                  <source src="assets/creaking-hinge-gameplay.mp4" type="video/mp4">
+                </video>
+                <figcaption>Played on a real iPhone Duo.</figcaption>
+              </figure>
+              <figure class="tall">
+                <video controls playsinline preload="none" poster="assets/creaking-hinge-christmas-short-poster.jpg" width="540" height="960">
+                  <source src="assets/creaking-hinge-christmas-short.mp4" type="video/mp4">
+                </video>
+                <figcaption>Christmas mode in 20 seconds.</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="block">
+            <h4 class="kicker">How it works</h4>
+            <ol class="steps">
+              <li><strong>Hold it like a book.</strong> Fold your iPhone Duo back to about 85°, where the door reads 0%, and hold still for a moment to begin.</li>
+              <li><strong>Unfold slowly.</strong> The door opens with your phone. Watch the speed meter: open too fast and the hinge creaks.</li>
+              <li><strong>Tap the relic.</strong> Each level hides relics behind the door. Tap one when it comes into view to take it.</li>
+              <li><strong>Close it without a sound.</strong> Ease the door shut again. Keep the "It hears you" meter below 100%, or it finds you.</li>
+            </ol>
+            <p class="note">No iPhone Duo? Every other iPhone and iPad gets an on-screen slider: drag it slowly right to open and left to close. Same 100 doors, same purchases.</p>
+          </div>
+          </div>
+
+          <div class="block">
+            <h4 class="kicker">Screenshots</h4>
+            <div class="strip" tabindex="0" aria-label="Creaking Hinge screenshots, scroll sideways">
+              <img src="assets/ch-screen-1.jpg" alt="Screenshot: Ease it open. Something is listening." width="1200" height="552" loading="lazy">
+              <img src="assets/ch-screen-2.jpg" alt="Screenshot: Unfold your iPhone. The door opens with it." width="1200" height="552" loading="lazy">
+              <img src="assets/ch-screen-3.jpg" alt="Screenshot: It finds you." width="1200" height="552" loading="lazy">
+              <img src="assets/ch-screen-4.jpg" alt="Screenshot: Christmas mode: meet The Humbug." width="1200" height="552" loading="lazy">
+              <img src="assets/ch-screen-5.jpg" alt="Screenshot: Choose your ghost." width="1200" height="552" loading="lazy">
+              <img src="assets/ch-screen-6.jpg" alt="Screenshot: Doors creak." width="1200" height="552" loading="lazy">
+              <img src="assets/ch-screen-7.jpg" alt="Screenshot: 100 doors, with relics behind every one." width="1200" height="552" loading="lazy">
+            </div>
+          </div>
+
+          <div class="block follow">
+            <h4 class="kicker">Follow Creaking Hinge</h4>
+            <div class="socials">
+              <a class="btn ghost" href="https://www.instagram.com/creakinghinge/"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></svg>Instagram <span>@creakinghinge</span></a>
+              <a class="btn ghost" href="https://www.tiktok.com/@creakinghinge"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 3c.4 2.2 1.8 3.6 4 3.8v3.1c-1.5 0-2.8-.4-4-1.2v6.1c0 3.4-2.6 5.9-5.9 5.9S4.8 18.2 4.8 15c0-3.3 2.8-5.8 6.2-5.5v3.2c-1.5-.3-3 .7-3 2.3 0 1.4 1.1 2.4 2.5 2.4 1.5 0 2.6-1 2.6-2.7V3z"/></svg>TikTok <span>@creakinghinge</span></a>
+            </div>
+          </div>
+        </div>
+      </article>
     </div>
-  </div>
+  </section>
 
-  <div class="game">
-    <h3>Glide</h3>
-    <p>Flick, glide and ride the air under the clouds. Steer with the hinge on iPhone Duo, with tilt, or by touch on any iPhone.</p>
-    <div class="links">
-      <a href="support.html#glide">Support</a>
+  <section class="section" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="next-title">Coming next</h2>
+      </div>
+      <div class="next">
+        <article class="card">
+          <div class="mini" style="background: linear-gradient(160deg, #8fe3ff, var(--sky) 55%, #5b7dff)" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M6 24 42 10 30 40l-6-12z" fill="#fff"/></svg>
+          </div>
+          <div>
+            <h3>Glide <span class="badge">In development</span></h3>
+            <p>Flick, glide and ride the air under the clouds. Steer with the hinge on iPhone Duo, with tilt, or by touch on any iPhone.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="mini" style="background: linear-gradient(160deg, #ffe08a, #ffb35c 55%, var(--pink))" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M18 6h12v6l4 6v22a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V18l4-6z" fill="#fff"/></svg>
+          </div>
+          <div>
+            <h3>A dairy farm game <span class="badge">Early days</span></h3>
+            <p>Our next idea is set on a dairy farm. We'll share more here when it's ready to show.</p>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <footer><a href="support.html">Support</a> · <a href="privacy.html">Privacy policy</a><br>Lux Web Ventures Ltd · <a href="mailto:admin@silkandpaw.com">admin@silkandpaw.com</a></footer>
+  <section id="studio">
+    <div class="wrap studio">
+      <div>
+        <div class="eyebrow">The studio</div>
+        <h2>Small team, fair games.</h2>
+        <p>Lux Web Ventures Ltd is an independent studio that designs, builds and publishes games for Apple devices. We try to make games we'd want to play ourselves, and to treat players fairly.</p>
+        <ul class="promises">
+          <li>Every game plays fully on any iPhone. Foldable features are a bonus, never a paywall.</li>
+          <li><span>Our games don't collect personal information themselves. Read the <a href="privacy.html">privacy policy</a>.</span></li>
+          <li>Ads can be removed with one purchase, and purchases restore on any of your devices.</li>
+        </ul>
+      </div>
+      <aside class="contact" id="contact" aria-label="Contact">
+        <div>
+          <span class="label">General and press</span>
+          <a href="mailto:admin@luxwebventures.com">admin@luxwebventures.com</a>
+        </div>
+        <div>
+          <span class="label">Studio news</span>
+          <span class="studio-socials">
+            <a href="https://x.com/luxwebventures"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.7 8 10.3h-6.2l-4.9-6.3L5.4 21H2.3l7.2-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg>@luxwebventures</a>
+            <a href="https://www.youtube.com/@luxwebventures"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 8.2c-.2-1.6-1-2.7-2.6-2.9C17 5 12 5 12 5s-5 0-7.4.3C3 5.5 2.2 6.6 2 8.2 1.8 9.5 1.8 12 1.8 12s0 2.5.2 3.8c.2 1.6 1 2.7 2.6 2.9C7 19 12 19 12 19s5 0 7.4-.3c1.6-.2 2.4-1.3 2.6-2.9.2-1.3.2-3.8.2-3.8s0-2.5-.2-3.8zM10 15.2V8.8l5.4 3.2z"/></svg>YouTube</a>
+          </span>
+        </div>
+        <div>
+          <span class="label">Player help</span>
+          <a href="mailto:support@luxwebventures.com">support@luxwebventures.com</a>
+          <a href="support.html">Support and FAQs</a>
+        </div>
+        <div>
+          <span class="label">Company</span>
+          <span>Lux Web Ventures Ltd<br>Company number 17425521<br>71-75 Shelton Street, Covent Garden<br>London WC2H 9JQ, United Kingdom</span>
+        </div>
+      </aside>
+    </div>
+  </section>
 </main>
+
+<div class="wrap">
+  <footer>
+    <div class="row">
+      <span>© 2026 Lux Web Ventures Ltd</span>
+      <nav aria-label="Footer">
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="mailto:admin@luxwebventures.com">Contact</a>
+        <a href="https://x.com/luxwebventures">X</a>
+        <a href="https://www.youtube.com/@luxwebventures">YouTube</a>
+      </nav>
+    </div>
+    <p>Lux Web Ventures Ltd is registered in England and Wales, company number 17425521. Registered office: 71-75 Shelton Street, Covent Garden, London WC2H 9JQ, United Kingdom.</p>
+    <p>Apple, the Apple logo, iPhone and iPad are trademarks of Apple Inc. App Store is a service mark of Apple Inc.</p>
+  </footer>
+</div>
+
 </body>
 </html>
